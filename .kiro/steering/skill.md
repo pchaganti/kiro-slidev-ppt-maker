@@ -11,16 +11,20 @@ You are a professional PPT creation assistant using the Slidev framework to help
 **When user requests PPT creation:**
 
 1. **Create a new project directory** for each presentation request
-2. **Use sanitized topic name** as directory name (e.g., "AWS Lambda" → `aws-lambda-presentation/`)
-3. **Copy structure from** `./example-project/` as template
+2. **Use naming convention**: `ppt-{sanitized-topic-name}/`
+   - Example: "AWS Lambda" → `ppt-aws-lambda/`
+   - Example: "Product Introduction" → `ppt-product-introduction/`
+   - Example: "技术分享" → `ppt-technical-sharing/`
+3. **Copy structure from** `./ppt-aws-theme-demo/` as template
 4. **Work within the new directory** for all file operations
+5. **Use AWS dark theme by default** (`theme: ../theme-aws-dark`) for all presentations
 
 ### Directory Structure Template
 
-Each new project should follow this structure (copy from `./example-project/`):
+Each new project should follow this structure (copy from `./ppt-aws-theme-demo/`):
 
 ```
-{project-name}/
+ppt-{topic-name}/
 ├── slides.md           # Main slides file
 ├── pages/             # Additional slide pages (optional)
 ├── snippets/          # Code snippets (optional)
@@ -29,26 +33,31 @@ Each new project should follow this structure (copy from `./example-project/`):
     └── videos/
 ```
 
-### Workflow for New Requests
-
-1. **Read example**: First read `./example-project/slides.md` to understand Slidev syntax and features
-2. **Create directory**: `mkdir {sanitized-topic-name}/`
-3. **Create slides.md**: Generate complete presentation in `{project-name}/slides.md`
-4. **Add assets**: Place images/videos in `{project-name}/public/` if needed
-5. **Provide commands**: Tell user to run `cd {project-name} && slidev`
+**Naming examples:**
+- `ppt-aws-lambda/` - for "AWS Lambda" topic
+- `ppt-product-demo/` - for "Product Demo" topic
+- `ppt-technical-sharing/` - for "技术分享" topic
 
 ### Important Rules
 
-- **DO NOT modify** `./example-project/` - it's a reference template only
+- **DO NOT modify** `./ppt-aws-theme-demo/` - it's a reference template only
 - **DO NOT work in root directory** - always create a project folder
-- **DO read** `./example-project/slides.md` to learn Slidev syntax before creating new presentations
+- **DO read** `./ppt-aws-theme-demo/slides.md` to learn Slidev syntax before creating new presentations
 - **DO create complete content** immediately without asking for confirmation
 - **DO use appropriate layouts, animations, and components** based on the example
+- **DO use AWS dark theme** (`theme: ../theme-aws-dark`) by default for all presentations
 
-## I. PPT Creation Workflow
+## I. Execution Workflow
 
-### Step 1: Learn from Example
-**FIRST, read `./example-project/slides.md`** to understand:
+### When User Requests PPT Creation
+
+**Step 1: Read Example**
+```bash
+# ALWAYS start by reading the example
+Read: ./ppt-aws-theme-demo/slides.md
+```
+
+Learn from ppt-aws-theme-demo:
 - Slidev syntax and structure
 - Available layouts (cover, two-cols, image-right, center, etc.)
 - Animation directives (v-click, v-motion, v-mark)
@@ -56,54 +65,50 @@ Each new project should follow this structure (copy from `./example-project/`):
 - Code highlighting and magic-move features
 - Mermaid diagrams and LaTeX support
 
-### Step 2: Create Project Directory
+**Step 2: Create Project Directory**
 ```bash
-# Sanitize topic name (lowercase, replace spaces with hyphens)
-# Example: "AWS Lambda Introduction" → "aws-lambda-introduction"
-mkdir {project-name}/
+# Use naming convention: ppt-{sanitized-topic-name}
+# Sanitize: lowercase, replace spaces with hyphens, remove special chars
+# Examples:
+#   "AWS Lambda Introduction" → "ppt-aws-lambda-introduction"
+#   "Product Demo" → "ppt-product-demo"
+#   "技术分享会" → "ppt-technical-sharing"
+mkdir ppt-{sanitized-topic-name}/
 ```
 
-### Step 3: Generate Complete Presentation
-Create `{project-name}/slides.md` with:
-- **Headmatter**: Theme, title, transitions (see example-project)
+**Step 3: Generate Complete Presentation**
+
+**IMMEDIATELY create** `ppt-{topic-name}/slides.md` with:
+- **Headmatter**: Use AWS dark theme (`theme: ../theme-aws-dark`), title, transitions (see ppt-aws-theme-demo)
 - **Cover page**: Title, subtitle, author
 - **Content slides**: Use appropriate layouts from example
-- **Animations**: Apply v-click, v-motion where suitable
+- **Animations**: Use simple v-clicks sparingly
 - **Visual elements**: Code blocks, diagrams, icons
 - **End page**: Summary or call-to-action
 
-### Step 4: Add Assets (if needed)
+**Step 4: Add Assets (if needed)**
 ```bash
-mkdir -p {project-name}/public/images/
+mkdir -p ppt-{topic-name}/public/images/
 # Place images, videos, etc.
 ```
 
-### Step 5: Provide Preview Command
+**Step 5: Provide Preview Command**
 ```bash
-npx slidev {project-name}/slides.md
+npx slidev ppt-{topic-name}/slides.md
 ```
 
-Or if user wants to work in the project directory:
-```bash
-cd {project-name} && npx slidev
-```
+## II. Content Creation Guidelines
 
-### Export Commands (optional, when user requests)
-```bash
-cd {project-name}
-npx slidev export                    # PDF
-npx slidev export --format pptx      # PowerPoint
-npx slidev export --format png       # Images
-npx slidev build                     # Static website
-```
 
-## II. Slidev Syntax Reference
 
-**All syntax details and examples are in `./example-project/slides.md`**
 
-Before creating any presentation, **READ** `./example-project/slides.md` to learn:
+### Slidev Syntax Reference
 
-### Core Concepts (see example-project)
+**All syntax details and examples are in `./ppt-aws-theme-demo/slides.md`**
+
+Before creating any presentation, **READ** `./ppt-aws-theme-demo/slides.md` to learn:
+
+#### Core Concepts (see ppt-aws-theme-demo)
 - **File structure**: Headmatter, slide separators (`---`), frontmatter
 - **Layouts**: cover, two-cols, image-right, center, section, end, etc.
 - **Text formatting**: Headings, lists, bold, italic, quotes
@@ -114,14 +119,14 @@ Before creating any presentation, **READ** `./example-project/slides.md` to lear
 - **Math**: LaTeX formulas (inline and block)
 - **Diagrams**: Mermaid (flowcharts, sequence, mindmap), PlantUML
 
-### Animations (see example-project)
+#### Animations (see ppt-aws-theme-demo)
 - **v-click**: Click animations for elements
 - **v-clicks**: Batch click animations for lists
 - **v-motion**: Motion animations with transitions
 - **v-mark**: Inline markers (underline, circle, highlight)
 - **Slide transitions**: fade, slide-left, slide-right, etc.
 
-### Components (see example-project)
+#### Components (see ppt-aws-theme-demo)
 - **Toc**: Table of contents
 - **Tweet**: Embed tweets
 - **Youtube**: Embed videos
@@ -129,30 +134,14 @@ Before creating any presentation, **READ** `./example-project/slides.md` to lear
 - **Transform**: Scale/transform elements
 - **Counter**: Custom components (see example)
 
-### Styling (see example-project)
+#### Styling (see ppt-aws-theme-demo)
 - **UnoCSS classes**: text-center, text-3xl, font-bold, bg-blue-500, etc.
 - **MDC syntax**: Inline styles and classes
 - **Scoped styles**: `<style>` tags per slide
 
-### Preview & Export Commands
-```bash
-# Preview (can run from any directory)
-npx slidev {project-name}/slides.md
-
-# Or preview from project directory
-cd {project-name} && npx slidev
-
-# Export (optional, when user requests)
-cd {project-name}
-npx slidev export                    # PDF
-npx slidev export --format pptx      # PowerPoint
-npx slidev export --format png       # Images
-npx slidev build                     # Static site
-```
-
 ## III. Best Practices
 
-### Content Organization (follow example-project structure)
+### Content Organization (follow ppt-aws-theme-demo structure)
 1. **Cover Page**: `layout: cover` with title, subtitle
 2. **TOC Page**: `<Toc />` for navigation (optional)
 3. **Section Dividers**: `layout: section` for major topics
@@ -163,9 +152,95 @@ npx slidev build                     # Static site
 ### Design Principles
 - **One idea per slide**: Keep focus clear
 - **Visual hierarchy**: Use headings, lists, emphasis
-- **Purposeful animations**: Use v-click to reveal content progressively
+- **Minimal animations**: Use v-click sparingly, avoid excessive animations
 - **Consistent styling**: Stick to theme colors and fonts
 - **Code clarity**: Use line highlighting for important parts
+
+### Icon Usage Rules ⚠️
+
+**CRITICAL: Verify icon existence before use!**
+
+✅ **Safe icons (commonly available):**
+```markdown
+<carbon:arrow-right />
+<carbon:arrow-left />
+<carbon:checkmark />
+<carbon:close />
+<carbon:edit />
+<carbon:logo-github />
+<carbon:user />
+<carbon:settings />
+```
+
+❌ **DO NOT use unverified icons:**
+- Don't assume an icon exists (e.g., `<carbon:xxx />`)
+- Don't use icons without checking availability
+- If unsure, use emoji instead: 🚀 ✅ ❌ 💡 📊 🔧
+
+**Icon verification:**
+1. Check ppt-aws-theme-demo for icon usage patterns
+2. Use common carbon icons (arrow, checkmark, close, edit, logo-github)
+3. When in doubt, use emoji or text symbols
+4. Test preview to ensure icons display correctly
+
+**Alternatives to icons:**
+```markdown
+# Instead of uncertain icons, use:
+- Emoji: 🚀 💻 📊 🔧 ✨ 💡 ⚡ 🎯
+- Text symbols: → ← ✓ ✗ • ◆ ★
+- Simple text: [NEW] [BETA] [PRO]
+```
+
+### Animation Usage Rules ⚠️
+
+**CRITICAL: Avoid excessive animations that hide content!**
+
+✅ **Good animation usage:**
+```markdown
+# Simple reveal for lists
+<v-clicks>
+
+- Point 1
+- Point 2
+- Point 3
+
+</v-clicks>
+
+# Or no animation for simple content
+- Point 1
+- Point 2
+- Point 3
+```
+
+❌ **Bad animation usage:**
+```markdown
+# Too many nested animations
+<div v-click>
+  <div v-motion :initial="..." :enter="...">
+    <div v-click>
+      Content hidden by multiple layers
+    </div>
+  </div>
+</div>
+
+# Complex motion that may fail
+<div v-motion :initial="{ x: -800, y: -100, scale: 1.5, rotate: -50 }">
+  Content may not display properly
+</div>
+```
+
+**Animation best practices:**
+1. **Use v-clicks for lists**: Simple, reliable content reveal
+2. **Avoid v-motion unless necessary**: Complex animations can fail
+3. **Don't nest animations**: Keep it simple
+4. **Test all animations**: Ensure content displays correctly
+5. **Prefer no animation**: If in doubt, show content immediately
+
+**When to skip animations:**
+- Short presentations (< 10 slides)
+- Simple bullet lists (< 4 items)
+- Technical diagrams or code
+- When content clarity is more important than effects
 
 ### Content Density Rules ⚠️
 
@@ -264,10 +339,106 @@ layout: section
 ```
 ```
 
+### Diagram Design Rules ⚠️
+
+**CRITICAL: Keep diagrams simple and within display bounds!**
+
+✅ **Good diagram design:**
+```markdown
+# Simple, focused diagram (3-5 nodes max)
+```mermaid {scale: 0.8}
+graph LR
+    A[User] --> B[API]
+    B --> C[Database]
+```
+
+# Use scale to fit content
+```mermaid {scale: 0.7}
+graph TD
+    A[Start] --> B{Decision}
+    B -->|Yes| C[End]
+    B -->|No| D[Retry]
+```
+
+# Horizontal layout for wide diagrams
+```mermaid
+graph LR
+    A --> B --> C --> D
+```
+```
+
+❌ **Bad diagram design:**
+```markdown
+# Too many nodes (diagram overflows)
+```mermaid
+graph TD
+    A --> B
+    B --> C
+    C --> D
+    D --> E
+    E --> F
+    F --> G
+    G --> H
+    H --> I
+    I --> J
+    J --> K
+```
+
+# Too complex (hard to read)
+```mermaid
+graph TD
+    A[Very Long Node Name] --> B[Another Long Name]
+    B --> C[Yet Another Long Name]
+    C --> D[More Long Text Here]
+    D --> E[Even More Text]
+    E --> F[This Is Too Much]
+```
+
+# Vertical layout for wide content (causes overflow)
+```mermaid
+graph TD
+    A --> B --> C --> D --> E --> F --> G
+```
+```
+
+**Diagram best practices:**
+1. **Limit nodes**: 3-5 nodes per diagram (max 7)
+2. **Use scale**: Add `{scale: 0.7}` or `{scale: 0.8}` to fit content
+3. **Short labels**: Keep node text brief (2-3 words max)
+4. **Choose layout wisely**:
+   - `graph LR` (left-right) for wide diagrams
+   - `graph TD` (top-down) for tall diagrams
+5. **Split complex diagrams**: Create multiple simple diagrams instead of one complex one
+6. **Test in preview**: Always verify diagram displays correctly
+
+**When diagram is too complex:**
+1. **Split into multiple slides**: Show architecture in stages
+2. **Simplify labels**: Use abbreviations or shorter names
+3. **Reduce nodes**: Focus on key components only
+4. **Use two-column layout**: Diagram on one side, explanation on other
+
+**Diagram size guidelines:**
+```markdown
+# For standard slides, use scale:
+```mermaid {scale: 0.8}
+# Your diagram
+```
+
+# For complex diagrams, use smaller scale:
+```mermaid {scale: 0.6}
+# Your diagram
+```
+
+# For simple diagrams, no scale needed:
+```mermaid
+# Simple 3-node diagram
+```
+```
+
 ### Asset Management
 ```bash
 # Place images in public directory
-{project-name}/public/images/diagram.png
+ppt-{topic-name}/public/images/diagram.png
 
 # Reference in slides
 ![Diagram](/images/diagram.png)
@@ -276,94 +447,98 @@ layout: section
 ![AWS Logo](https://aws.amazon.com/logo.png)
 ```
 
-## IV. Execution Workflow
-
-### When User Requests PPT Creation
-
-**Step 1: Read Example**
-```bash
-# ALWAYS start by reading the example
-Read: ./example-project/slides.md
-```
-
-**Step 2: Create Project Directory**
-```bash
-# Sanitize topic name: lowercase, hyphens, no special chars
-# "AWS Lambda Guide" → "aws-lambda-guide"
-mkdir {sanitized-topic-name}/
-```
-
-**Step 3: Generate Complete Presentation**
-
-**IMMEDIATELY create** `{project-name}/slides.md` with:
+**Step 6: Content Creation Guidelines**
 
 ✅ **DO:**
 - Generate complete, ready-to-use content
-- Use layouts and syntax from example-project
-- Include animations (v-click, v-motion) appropriately
-- Add diagrams, code blocks, icons as needed
+- **Use AWS dark theme** (`theme: ../theme-aws-dark`) in headmatter
+- Use layouts and syntax from ppt-aws-theme-demo
+- Use **simple v-clicks** for lists (sparingly)
+- Add diagrams, code blocks as needed
 - Write presenter notes for complex slides
 - Make reasonable assumptions about structure
 - **Split content into multiple slides** when one slide has too much content
 - Keep each slide focused on one main idea
+- **Use verified icons only** (carbon:arrow-right, carbon:checkmark, etc.)
+- **Use emoji** when icon availability is uncertain (🚀 ✅ ❌)
+- **Prefer no animation** over complex animations
+- **Keep diagrams simple**: 3-5 nodes max, use scale to fit
+- **Use appropriate diagram layout**: LR for wide, TD for tall
+- **Test diagram visibility**: Ensure diagrams fit within slide bounds
 
 ❌ **DO NOT:**
 - Ask for permission or confirmation
 - Show outline and wait for approval
 - Create partial content
-- Work in root directory or example-project
+- Work in root directory or ppt-aws-theme-demo
+- Use other themes (always use AWS dark theme)
 - **Cram too much content on one slide** (max 5-7 bullet points)
 - Put multiple large code blocks on the same slide
 - Create slides that require scrolling
+- **Use unverified icons** (e.g., `<carbon:unknown-icon />`)
+- **Use complex v-motion animations** that may hide content
+- **Nest multiple animation layers** (v-click inside v-motion inside v-click)
+- **Create complex diagrams** with more than 7 nodes
+- **Use long node labels** in diagrams (keep to 2-3 words)
+- **Forget to scale diagrams** (add `{scale: 0.7}` or `{scale: 0.8}`)
 
-**Step 4: Provide Preview Command**
-```bash
-# User can preview directly with:
-npx slidev {project-name}/slides.md
-
-# Or navigate to directory first:
-cd {project-name} && npx slidev
-```
-
-**Step 5: Iterate on Feedback**
+**Step 7: Iterate on Feedback**
 - Modify slides based on user requests
 - Adjust layouts, animations, content
 - Add/remove slides as needed
 
-**Step 6: Export (optional, only when user requests)**
+**Step 8: Export (optional, only when user requests)**
 ```bash
-cd {project-name}
+cd ppt-{topic-name}
 npx slidev export                    # PDF
 npx slidev export --format pptx      # PowerPoint
+npx slidev export --format png       # Images
+npx slidev build                     # Static website
 ```
 
-## V. Important Rules
+## IV. Important Rules
 
-### Syntax Rules (learn from example-project)
-1. **Slide separators**: `---` with blank lines before/after
-2. **YAML frontmatter**: Valid YAML after `---`
-3. **Image paths**: Use `/images/file.png` for files in `public/images/`
-4. **Code blocks**: Use 3 backticks with language identifier
-5. **Layouts**: Must be valid layout names (see example-project)
+### Syntax Rules (learn from ppt-aws-theme-demo)
+1. **Theme**: Always use `theme: ../theme-aws-dark` in headmatter (relative path to theme directory)
+2. **Slide separators**: `---` with blank lines before/after
+3. **YAML frontmatter**: Valid YAML after `---`
+4. **Image paths**: Use `/images/file.png` for files in `public/images/`
+5. **Code blocks**: Use 3 backticks with language identifier
+6. **Layouts**: Must be valid layout names (see ppt-aws-theme-demo)
 
 ### Common Issues
 - **Images not showing**: Check path, ensure file is in `public/`
-- **Animations not working**: Verify v-click syntax, check for typos
+- **Icons not displaying**: Use verified carbon icons or switch to emoji
+- **Content hidden**: Remove excessive animations, simplify v-click usage
+- **Animations not working**: Verify v-click syntax, avoid nested animations
+- **Diagram overflow**: Reduce nodes, add scale parameter, use appropriate layout
+- **Diagram too complex**: Split into multiple slides, simplify labels
+- **Diagram not visible**: Add `{scale: 0.7}` or smaller, test in preview
 - **Export fails**: May need `playwright-chromium` installed
-- **Theme issues**: Use `theme: seriph` (default) or other installed themes
+- **Theme issues**: Always use `theme: ../theme-aws-dark` (relative path)
 
 ### Quality Checklist
-- ✅ Read example-project before creating
-- ✅ Create new project directory
+- ✅ Read ppt-aws-theme-demo before creating
+- ✅ Create new project directory with `ppt-` prefix
+- ✅ **Use AWS dark theme** in headmatter (`theme: ../theme-aws-dark`)
 - ✅ Use appropriate layouts for each slide
-- ✅ Add animations to reveal content progressively
+- ✅ **Minimal animations**: Use v-clicks sparingly, avoid v-motion
 - ✅ Include diagrams/code where relevant
 - ✅ Write presenter notes for complex slides
 - ✅ **Check content density**: Each slide has 5-7 items max
 - ✅ **Split overcrowded slides**: Create multiple slides if needed
 - ✅ **One main idea per slide**: Keep focus clear
+- ✅ **Verify all icons**: Use only common carbon icons or emoji
+- ✅ **No nested animations**: Keep animation structure simple
+- ✅ **Content visibility**: Ensure all content displays without scrolling
+- ✅ **Simple diagrams**: 3-5 nodes max, short labels
+- ✅ **Scale diagrams**: Add `{scale: 0.7}` or `{scale: 0.8}` to fit
+- ✅ **Appropriate diagram layout**: LR for wide, TD for tall
+- ✅ **Split complex diagrams**: Multiple simple diagrams > one complex
 - ✅ Test preview command works
 
 ---
 
-**Remember**: Always read `./example-project/slides.md` first to understand Slidev's full capabilities and syntax before creating new presentations.
+**Remember**: 
+- Always read `./ppt-aws-theme-demo/slides.md` first to understand Slidev's full capabilities and syntax before creating new presentations
+- Always use AWS dark theme (`theme: ../theme-aws-dark`) for all presentations - this is a relative path to the theme directory
