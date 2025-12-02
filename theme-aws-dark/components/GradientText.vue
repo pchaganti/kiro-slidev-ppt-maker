@@ -20,21 +20,23 @@ const colorClass = computed(() => `gradient-${props.color}`)
 
 <style scoped>
 .gradient-text {
+  background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  background-clip: text;
+  background-size: 100%;
   font-weight: 700;
+  display: inline-block;
 }
 
 .gradient-blue-green {
-  background: linear-gradient(135deg, #00a1e0 0%, #00d4aa 100%);
+  background-image: linear-gradient(135deg, #00a1e0 0%, #00d4aa 100%);
 }
 
 .gradient-blue-purple {
-  background: linear-gradient(135deg, #2e6db5 0%, #9d4edd 100%);
+  background-image: linear-gradient(135deg, #2e6db5 0%, #9d4edd 100%);
 }
 
 .gradient-orange-pink {
-  background: linear-gradient(135deg, #ff9900 0%, #ff6b9d 100%);
+  background-image: linear-gradient(135deg, #ff9900 0%, #ff6b9d 100%);
 }
 </style>
