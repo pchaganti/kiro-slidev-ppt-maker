@@ -10,7 +10,7 @@ const showFooter = computed(() => {
   // Most layouts have their own footer, so this is just a fallback
   const layoutsWithOwnFooter = [
     'cover', 'section', 'center', 'end',
-    'two-cols', 'image-right', 'intro', 'default'
+    'two-cols', 'left-right', 'image-right', 'intro', 'default'
   ]
   return !layoutsWithOwnFooter.includes(layout || '')
 })

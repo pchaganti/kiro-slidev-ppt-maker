@@ -1,19 +1,15 @@
 <template>
-  <div class="slidev-layout image-right">
-    <div class="main-content">
-      <div class="title-area">
+  <div class="slidev-layout left-right">
+    <div class="cols-container">
+      <div class="col-left">
         <slot />
       </div>
-      <div class="content-container">
-        <div class="content-left">
-          <slot name="left" />
-        </div>
-        <div class="content-right">
-          <slot name="right" />
-        </div>
+      <div class="col-right">
+        <slot name="right" />
       </div>
     </div>
-    <div class="image-right-footer">
+    
+    <div class="left-right-footer">
       <div class="footer-left">
         <AWSLogo size="sm" color="#e0e0e0" />
         <p class="copyright">© {{ new Date().getFullYear() }}, Amazon Web Services, Inc. or its affiliates. All rights reserved. Amazon Confidential and Trademark.</p>
@@ -26,7 +22,7 @@
 </template>
 
 <style scoped>
-.image-right {
+.left-right {
   background: rgb(20, 30, 44);
   padding: 2.5rem 3rem 1.5rem 3rem;
   display: flex;
@@ -35,19 +31,16 @@
   height: 100%;
 }
 
-.main-content {
+.cols-container {
   flex: 1;
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
   overflow: auto;
 }
 
-.title-area {
-  width: 100%;
-  flex-shrink: 0;
-}
-
-.title-area :deep(h1) {
+.col-left :deep(h1),
+.col-right :deep(h1) {
   font-size: 3rem;
   font-weight: 700;
   color: #ffffff;
@@ -55,20 +48,8 @@
   line-height: 1.2;
 }
 
-.content-container {
-  flex: 1;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 3rem;
-  min-height: 0;
-}
-
-.content-left {
-  display: flex;
-  flex-direction: column;
-}
-
-.content-left :deep(h2) {
+.col-left :deep(h2),
+.col-right :deep(h2) {
   font-size: 2rem;
   font-weight: 600;
   color: #ffffff;
@@ -76,7 +57,8 @@
   line-height: 1.3;
 }
 
-.content-left :deep(h3) {
+.col-left :deep(h3),
+.col-right :deep(h3) {
   font-size: 1.5rem;
   font-weight: 600;
   color: #ffffff;
@@ -84,15 +66,18 @@
   line-height: 1.3;
 }
 
-.content-left :deep(p) {
+.col-left :deep(p),
+.col-right :deep(p) {
   font-size: 1.125rem;
   line-height: 1.6;
   color: #ffffff;
   margin-bottom: 1rem;
 }
 
-.content-left :deep(ul),
-.content-left :deep(ol) {
+.col-left :deep(ul),
+.col-right :deep(ul),
+.col-left :deep(ol),
+.col-right :deep(ol) {
   font-size: 1.125rem;
   line-height: 1.8;
   color: #ffffff;
@@ -100,24 +85,12 @@
   margin: 1rem 0;
 }
 
-.content-left :deep(li) {
+.col-left :deep(li),
+.col-right :deep(li) {
   margin-bottom: 0.5rem;
 }
 
-.content-right {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.content-right :deep(img) {
-  width: 100%;
-  height: auto;
-  border-radius: 8px;
-  object-fit: contain;
-}
-
-.image-right-footer {
+.left-right-footer {
   display: flex;
   justify-content: space-between;
   align-items: flex-end;

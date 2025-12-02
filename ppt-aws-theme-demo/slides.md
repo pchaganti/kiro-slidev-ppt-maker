@@ -39,6 +39,22 @@ They feature a gradient background and large text.
 -->
 
 ---
+layout: intro
+---
+
+# Intro Layout
+
+## Subtitle Goes Here
+
+This layout is perfect for introducing new topics or sections. It provides a clean, focused presentation of your content with proper hierarchy.
+
+Use it when you need more text than a section slide but want to maintain visual impact.
+
+<!--
+Intro layout is between section and default - more content than section, cleaner than default.
+-->
+
+---
 layout: default
 ---
 
@@ -62,7 +78,45 @@ It includes automatic footer with logo and page numbers.
 layout: two-cols
 ---
 
-# Two Columns Layout
+::title::
+# Two-cols layout
+
+::left::
+## Step 1: Setup
+Initialize your AWS environment:
+
+- Create AWS account
+- Configure IAM policies
+
+## Step 2: Development
+Build using AWS best practices:
+
+- Design architecture
+- Implement core features
+
+::right::
+## Step 3: Testing
+Test in staging environment:
+
+- Unit testing
+- Integration testing
+
+## Step 4: Deployment
+Deploy to production:
+
+- Set up CI/CD pipeline
+- Deploy infrastructure
+
+<!--
+Two-cols layout supports scrolling for longer content.
+Each column scrolls independently when content exceeds page height.
+-->
+
+---
+layout: left-right
+---
+
+# Left Column
 
 Left column content:
 
@@ -87,6 +141,44 @@ Both columns are equal width.
 <!--
 Two-column layout is great for comparisons, before/after, or complementary content.
 -->
+
+---
+layout: image-right
+---
+
+# Image Right Layout
+
+::left::
+
+Content on the left, image on the right.
+
+- Perfect for visual storytelling
+- Supports any image size
+- Maintains aspect ratio
+- Great for architecture diagrams
+
+::right::
+
+![City Landscape](https://d1.awsstatic.com/onedam/marketing-channels/website/aws/en_US/solution-case-studies/approved/images/gcrp-case-study-images/City%20landscape.b396337462b85cb051f37f5799dfd81a91bfbf8e.jpeg)
+
+<!--
+Image-right layout: title spans full width, content splits into left/right columns.
+-->
+
+---
+
+# Inline Images
+
+You can also use images inline within any layout:
+
+![AWS City](https://d1.awsstatic.com/onedam/marketing-channels/website/aws/en_US/solution-case-studies/approved/images/gcrp-case-study-images/City%20landscape.b396337462b85cb051f37f5799dfd81a91bfbf8e.jpeg){width=600px}
+
+Use `{width=XXXpx}` to control image size.
+
+<!--
+Inline images work in any layout. Control size with width parameter.
+-->
+
 
 ---
 layout: default
@@ -152,22 +244,6 @@ Content is centered both horizontally and vertically
 <!--
 Center layout puts content in the middle with same styling as default.
 Great for transitions or key messages.
--->
-
----
-layout: intro
----
-
-# Intro Layout
-
-## Subtitle Goes Here
-
-This layout is perfect for introducing new topics or sections. It provides a clean, focused presentation of your content with proper hierarchy.
-
-Use it when you need more text than a section slide but want to maintain visual impact.
-
-<!--
-Intro layout is between section and default - more content than section, cleaner than default.
 -->
 
 ---
@@ -292,6 +368,7 @@ layout: default
 <!--
 Final slide with links and resources.
 -->
+
 
 ---
 layout: end

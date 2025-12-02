@@ -117,11 +117,11 @@ layout: intro
 Content here
 ```
 
-### Two Columns
-Two-column layout
+### Left Right
+Simple left-right two-column layout (for short content within ~10 lines)
 ```yaml
 ---
-layout: two-cols
+layout: left-right
 ---
 Left column content
 
@@ -129,13 +129,40 @@ Left column content
 Right column content
 ```
 
+### Two Columns
+Two-column layout with title and scrollable content (for longer content)
+```yaml
+---
+layout: two-cols
+---
+
+::title::
+# Process Overview
+
+::left::
+## Step 1: Planning
+Detailed planning phase...
+
+## Step 2: Implementation
+Implementation details...
+
+::right::
+## Step 3: Testing
+Testing procedures...
+
+## Step 4: Deployment
+Deployment process...
+```
+
 ### Image Right
-Content on left, image on right
+Title spans full width, content on left, image on right
 ```yaml
 ---
 layout: image-right
 ---
 # Title
+
+::left::
 Content here
 
 ::right::

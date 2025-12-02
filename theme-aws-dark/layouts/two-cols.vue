@@ -1,11 +1,19 @@
 <template>
   <div class="slidev-layout two-cols">
-    <div class="cols-container">
-      <div class="col-left">
-        <slot />
-      </div>
-      <div class="col-right">
-        <slot name="right" />
+    <div class="two-cols-content">
+      <h1 class="two-cols-title">
+        <slot name="title">
+          <slot />
+        </slot>
+      </h1>
+      
+      <div class="two-cols-container">
+        <div class="two-cols-left">
+          <slot name="left" />
+        </div>
+        <div class="two-cols-right">
+          <slot name="right" />
+        </div>
       </div>
     </div>
     
@@ -31,34 +39,47 @@
   height: 100%;
 }
 
-.cols-container {
+.two-cols-content {
   flex: 1;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 3rem;
-  overflow: auto;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
 }
 
-.col-left :deep(h1),
-.col-right :deep(h1) {
+.two-cols-title {
   font-size: 3rem;
   font-weight: 700;
   color: #ffffff;
   margin-bottom: 2rem;
   line-height: 1.2;
+  flex-shrink: 0;
 }
 
-.col-left :deep(h2),
-.col-right :deep(h2) {
-  font-size: 2rem;
-  font-weight: 600;
+.two-cols-title :deep(h1) {
+  font-size: 3rem;
+  font-weight: 700;
   color: #ffffff;
-  margin-bottom: 1.5rem;
-  line-height: 1.3;
+  margin: 0;
+  line-height: 1.2;
 }
 
-.col-left :deep(h3),
-.col-right :deep(h3) {
+.two-cols-container {
+  flex: 1;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+  overflow: auto;
+  min-height: 0;
+}
+
+.two-cols-left,
+.two-cols-right {
+  overflow-y: auto;
+  padding-right: 0.5rem;
+}
+
+.two-cols-left :deep(h2),
+.two-cols-right :deep(h2) {
   font-size: 1.5rem;
   font-weight: 600;
   color: #ffffff;
@@ -66,28 +87,43 @@
   line-height: 1.3;
 }
 
-.col-left :deep(p),
-.col-right :deep(p) {
-  font-size: 1.125rem;
+.two-cols-left :deep(h3),
+.two-cols-right :deep(h3) {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #ffffff;
+  margin-bottom: 0.75rem;
+  line-height: 1.3;
+}
+
+.two-cols-left :deep(p),
+.two-cols-right :deep(p) {
+  font-size: 1rem;
   line-height: 1.6;
   color: #ffffff;
   margin-bottom: 1rem;
 }
 
-.col-left :deep(ul),
-.col-right :deep(ul),
-.col-left :deep(ol),
-.col-right :deep(ol) {
-  font-size: 1.125rem;
-  line-height: 1.8;
+.two-cols-left :deep(ul),
+.two-cols-right :deep(ul),
+.two-cols-left :deep(ol),
+.two-cols-right :deep(ol) {
+  font-size: 1rem;
+  line-height: 1.7;
   color: #ffffff;
-  padding-left: 2.5rem;
-  margin: 1rem 0;
+  padding-left: 2rem;
+  margin: 0.75rem 0;
 }
 
-.col-left :deep(li),
-.col-right :deep(li) {
+.two-cols-left :deep(li),
+.two-cols-right :deep(li) {
   margin-bottom: 0.5rem;
+}
+
+.two-cols-left :deep(strong),
+.two-cols-right :deep(strong) {
+  color: #00a1e0;
+  font-weight: 600;
 }
 
 .two-cols-footer {
@@ -95,6 +131,7 @@
   justify-content: space-between;
   align-items: flex-end;
   margin-top: 1rem;
+  flex-shrink: 0;
 }
 
 .footer-left {
@@ -116,5 +153,28 @@
   font-size: 0.75rem;
   color: #e0e0e0;
   font-weight: 400;
+}
+
+/* 自定义滚动条样式 */
+.two-cols-left::-webkit-scrollbar,
+.two-cols-right::-webkit-scrollbar {
+  width: 4px;
+}
+
+.two-cols-left::-webkit-scrollbar-track,
+.two-cols-right::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 2px;
+}
+
+.two-cols-left::-webkit-scrollbar-thumb,
+.two-cols-right::-webkit-scrollbar-thumb {
+  background: rgba(0, 161, 224, 0.5);
+  border-radius: 2px;
+}
+
+.two-cols-left::-webkit-scrollbar-thumb:hover,
+.two-cols-right::-webkit-scrollbar-thumb:hover {
+  background: rgba(0, 161, 224, 0.7);
 }
 </style>

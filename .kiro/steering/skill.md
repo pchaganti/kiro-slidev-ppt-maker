@@ -44,7 +44,7 @@ ppt-{topic-name}/
 - **DO NOT work in root directory** - always create a project folder
 - **DO read** `./ppt-aws-theme-demo/slides.md` to learn Slidev syntax before creating new presentations
 - **DO create complete content** immediately without asking for confirmation
-- **DO use appropriate layouts, animations, and components** based on the example
+- **DO use appropriate layouts and components** based on the example (avoid animations)
 - **DO use AWS dark theme** (`theme: ../theme-aws-dark`) by default for all presentations
 
 ## I. Execution Workflow
@@ -59,11 +59,12 @@ Read: ./ppt-aws-theme-demo/slides.md
 
 Learn from ppt-aws-theme-demo:
 - Slidev syntax and structure
-- Available layouts (cover, two-cols, image-right, center, etc.)
-- Animation directives (v-click, v-motion, v-mark)
+- Available layouts (cover, section, default, center, intro, left-right, two-cols, image-right, end)
+- **Animation directives** (v-click, v-motion, v-mark) - **USE SPARINGLY OR AVOID**
 - Components (Toc, Tweet, Youtube, etc.)
 - Code highlighting and magic-move features
 - Mermaid diagrams and LaTeX support
+- **Image usage** (prefer external URLs over local files)
 
 **Step 2: Create Project Directory**
 ```bash
@@ -82,8 +83,8 @@ mkdir ppt-{sanitized-topic-name}/
 - **Headmatter**: Use AWS dark theme (`theme: ../theme-aws-dark`), title, transitions (see ppt-aws-theme-demo)
 - **Cover page**: Title, subtitle, author
 - **Content slides**: Use appropriate layouts from example
-- **Animations**: Use simple v-clicks sparingly
-- **Visual elements**: Code blocks, diagrams, icons
+- **NO animations**: Avoid v-click, v-motion, and other animations (content clarity is priority)
+- **Visual elements**: Code blocks, diagrams, images (use URLs), icons (emoji preferred)
 - **End page**: Summary or call-to-action
 
 **Step 4: Add Assets (if needed)**
@@ -119,10 +120,10 @@ Before creating any presentation, **READ** `./ppt-aws-theme-demo/slides.md` to l
 - **Math**: LaTeX formulas (inline and block)
 - **Diagrams**: Mermaid (flowcharts, sequence, mindmap), PlantUML
 
-#### Animations (see ppt-aws-theme-demo)
-- **v-click**: Click animations for elements
-- **v-clicks**: Batch click animations for lists
-- **v-motion**: Motion animations with transitions
+#### Animations (see ppt-aws-theme-demo) - **USE SPARINGLY OR NOT AT ALL**
+- **v-click**: Click animations for elements (use sparingly)
+- **v-clicks**: Batch click animations for lists (use sparingly)
+- **v-motion**: Motion animations with transitions (**AVOID - can cause issues**)
 - **v-mark**: Inline markers (underline, circle, highlight)
 - **Slide transitions**: fade, slide-left, slide-right, etc.
 
@@ -264,8 +265,13 @@ Before creating any presentation, **READ** `./ppt-aws-theme-demo/slides.md` to l
 1. **Split by topic**: Create separate slides for each sub-topic
 2. **Use section dividers**: Add `layout: section` between major topics
 3. **Progressive disclosure**: Use v-click to reveal content gradually
-4. **Two-column layout**: Use `layout: two-cols` to organize content
-5. **Multiple slides**: Better to have 3 clear slides than 1 crowded slide
+4. **Simple two-column**: Use `layout: left-right` for short content (within ~10 lines)
+5. **Scrollable two-column**: Use `layout: two-cols` when content exceeds ~10 lines (supports scrolling)
+6. **Multiple slides**: Better to have 3 clear slides than 1 crowded slide
+
+**Layout selection guideline:**
+- `left-right`: Simple left/right split, no title, for short content (~10 lines max)
+- `two-cols`: Has title slot, supports scrolling, for longer content that needs structure
 
 **Examples of splitting:**
 
@@ -435,17 +441,53 @@ graph TD
 ```
 ```
 
-### Asset Management
+### Image Usage Rules ⚠️
+
+**CRITICAL: Prefer URL images over local files!**
+
+✅ **RECOMMENDED: Use external URLs**
+```markdown
+# Direct URL (best practice)
+![City](https://d1.awsstatic.com/path/to/image.jpeg)
+
+# With size control
+![City](https://d1.awsstatic.com/path/to/image.jpeg){width=600px}
+
+# In image-right layout
+---
+layout: image-right
+---
+
+# Title
+
+::left::
+Content here
+
+::right::
+![Image](https://example.com/image.png)
+```
+
+✅ **When to use local images:**
+- Custom diagrams created specifically for this presentation
+- Images that need to be bundled with the presentation
+- Images not available via URL
+
+**Local image setup:**
 ```bash
 # Place images in public directory
-ppt-{topic-name}/public/images/diagram.png
+mkdir -p ppt-{topic-name}/public/images/
+# Copy image files there
 
 # Reference in slides
 ![Diagram](/images/diagram.png)
-
-# Or use external URLs
-![AWS Logo](https://aws.amazon.com/logo.png)
 ```
+
+**Image best practices:**
+1. **Prefer URLs**: Use external image URLs whenever possible (AWS assets, public images)
+2. **Control size**: Use `{width=XXXpx}` or `{width=100%}` to control image dimensions
+3. **Use image-right layout**: For slides with text + image combination
+4. **Optimize images**: Keep file sizes reasonable for local images
+5. **Test display**: Verify images load correctly in preview
 
 **Step 6: Content Creation Guidelines**
 
@@ -453,15 +495,15 @@ ppt-{topic-name}/public/images/diagram.png
 - Generate complete, ready-to-use content
 - **Use AWS dark theme** (`theme: ../theme-aws-dark`) in headmatter
 - Use layouts and syntax from ppt-aws-theme-demo
-- Use **simple v-clicks** for lists (sparingly)
+- **Avoid animations entirely** - content clarity is more important than effects
 - Add diagrams, code blocks as needed
+- **Use external image URLs** whenever possible (AWS assets, public images)
 - Write presenter notes for complex slides
 - Make reasonable assumptions about structure
 - **Split content into multiple slides** when one slide has too much content
 - Keep each slide focused on one main idea
-- **Use verified icons only** (carbon:arrow-right, carbon:checkmark, etc.)
-- **Use emoji** when icon availability is uncertain (🚀 ✅ ❌)
-- **Prefer no animation** over complex animations
+- **Keep content within ~10 lines per column** to avoid scrolling
+- **Use emoji for icons** (🚀 ✅ ❌ 💡 📊 🔧) - safer than icon components
 - **Keep diagrams simple**: 3-5 nodes max, use scale to fit
 - **Use appropriate diagram layout**: LR for wide, TD for tall
 - **Test diagram visibility**: Ensure diagrams fit within slide bounds
@@ -472,12 +514,14 @@ ppt-{topic-name}/public/images/diagram.png
 - Create partial content
 - Work in root directory or ppt-aws-theme-demo
 - Use other themes (always use AWS dark theme)
+- **Use ANY animations** (v-click, v-motion, v-clicks) - they cause issues and hide content
+- Create slides with excessive content (prefer splitting into multiple slides)
+- Use `two-cols` for short content (use `left-right` instead)
 - **Cram too much content on one slide** (max 5-7 bullet points)
 - Put multiple large code blocks on the same slide
 - Create slides that require scrolling
-- **Use unverified icons** (e.g., `<carbon:unknown-icon />`)
-- **Use complex v-motion animations** that may hide content
-- **Nest multiple animation layers** (v-click inside v-motion inside v-click)
+- **Use icon components** (e.g., `<carbon:xxx />`) - use emoji instead
+- **Create local image files** unless absolutely necessary - prefer external URLs
 - **Create complex diagrams** with more than 7 nodes
 - **Use long node labels** in diagrams (keep to 2-3 words)
 - **Forget to scale diagrams** (add `{scale: 0.7}` or `{scale: 0.8}`)
@@ -522,14 +566,14 @@ npx slidev build                     # Static website
 - ✅ Create new project directory with `ppt-` prefix
 - ✅ **Use AWS dark theme** in headmatter (`theme: ../theme-aws-dark`)
 - ✅ Use appropriate layouts for each slide
-- ✅ **Minimal animations**: Use v-clicks sparingly, avoid v-motion
+- ✅ **NO animations**: Avoid v-click, v-motion, v-clicks entirely
+- ✅ **Use emoji instead of icon components**: 🚀 ✅ ❌ 💡 📊 🔧
+- ✅ **Use external image URLs**: Prefer URLs over local files
 - ✅ Include diagrams/code where relevant
 - ✅ Write presenter notes for complex slides
 - ✅ **Check content density**: Each slide has 5-7 items max
 - ✅ **Split overcrowded slides**: Create multiple slides if needed
 - ✅ **One main idea per slide**: Keep focus clear
-- ✅ **Verify all icons**: Use only common carbon icons or emoji
-- ✅ **No nested animations**: Keep animation structure simple
 - ✅ **Content visibility**: Ensure all content displays without scrolling
 - ✅ **Simple diagrams**: 3-5 nodes max, short labels
 - ✅ **Scale diagrams**: Add `{scale: 0.7}` or `{scale: 0.8}` to fit
