@@ -214,7 +214,7 @@ Great for technical presentations.
 layout: default
 ---
 
-# Gradient Text
+# <GradientText color="orange-pink">Gradient Text</GradientText>
 
 Highlight important terms with <GradientText>gradient effects</GradientText>!
 
@@ -235,15 +235,17 @@ Choose colors that match your content.
 layout: center
 ---
 
-# Center Layout
+# <GradientText color="blue-purple">Center Layout</GradientText>
 
-Perfect for section breaks or important announcements
+Perfect for <GradientText color="blue-green">section breaks</GradientText> or <GradientText color="orange-pink">important announcements</GradientText>
 
 Content is centered both horizontally and vertically
 
+Use GradientText component to <GradientText color="blue-purple">emphasize key words</GradientText>
+
 <!--
-Center layout puts content in the middle with same styling as default.
-Great for transitions or key messages.
+Center layout puts content in the middle with vertical and horizontal centering.
+Great for transitions or key messages. Use GradientText for emphasis.
 -->
 
 ---
@@ -366,7 +368,7 @@ layout: default
 [Theme Repository](#)
 
 <!--
-Final slide with links and resources.
+Final slide with links and resources using center layout.
 -->
 
 

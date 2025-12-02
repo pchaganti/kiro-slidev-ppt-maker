@@ -29,6 +29,10 @@
   flex: 1;
   overflow: auto;
   text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .center-content :deep(h1) {

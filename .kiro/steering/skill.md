@@ -84,7 +84,12 @@ mkdir ppt-{sanitized-topic-name}/
 - **Cover page**: Title, subtitle, author
 - **Content slides**: Use appropriate layouts from example
 - **NO animations**: Avoid v-click, v-motion, and other animations (content clarity is priority)
-- **Visual elements**: Code blocks, diagrams, images (use URLs), icons (emoji preferred)
+- **Rich visual elements**: 
+  - Images with controlled size (`{width=500px}` or `{width=60%}`)
+  - GradientText for emphasis (`<GradientText color="blue-green">term</GradientText>`)
+  - Bold text for important points (`**important**`)
+  - Code blocks, diagrams
+  - Emoji for icons (🚀 ✅ ❌)
 - **End page**: Summary or call-to-action
 
 **Step 4: Add Assets (if needed)**
@@ -161,6 +166,8 @@ Before creating any presentation, **READ** `./ppt-aws-theme-demo/slides.md` to l
 - **One idea per slide**: Keep focus clear
 - **Visual hierarchy**: Use headings, lists, emphasis
 - **NO animations**: Avoid v-click, v-motion, v-clicks entirely for content clarity
+- **Rich visual content**: Add images, use GradientText, bold text for emphasis
+- **Image sizing**: Always control image dimensions (`{width=500px}` or `{width=60%}`)
 - **Consistent styling**: Stick to theme colors and fonts
 - **Code clarity**: Use line highlighting for important parts
 - **Use external images**: Prefer image URLs over local files
@@ -436,15 +443,16 @@ graph TD
 
 ### Image Usage Rules ⚠️
 
-**CRITICAL: Prefer URL images over local files!**
+**CRITICAL: Add images to enhance presentation richness!**
 
 ✅ **RECOMMENDED: Use external URLs**
 ```markdown
 # Direct URL (best practice)
 ![City](https://d1.awsstatic.com/path/to/image.jpeg)
 
-# With size control
-![City](https://d1.awsstatic.com/path/to/image.jpeg){width=600px}
+# With size control (IMPORTANT: control size to avoid overflow)
+![City](https://d1.awsstatic.com/path/to/image.jpeg){width=500px}
+![City](https://d1.awsstatic.com/path/to/image.jpeg){width=60%}
 
 # In image-right layout
 ---
@@ -457,7 +465,7 @@ layout: image-right
 Content here
 
 ::right::
-![Image](https://example.com/image.png)
+![Image](https://example.com/image.png){width=100%}
 ```
 
 ✅ **When to use local images:**
@@ -472,15 +480,17 @@ mkdir -p ppt-{topic-name}/public/images/
 # Copy image files there
 
 # Reference in slides
-![Diagram](/images/diagram.png)
+![Diagram](/images/diagram.png){width=500px}
 ```
 
 **Image best practices:**
-1. **Prefer URLs**: Use external image URLs whenever possible (AWS assets, public images)
-2. **Control size**: Use `{width=XXXpx}` or `{width=100%}` to control image dimensions
-3. **Use image-right layout**: For slides with text + image combination
-4. **Optimize images**: Keep file sizes reasonable for local images
-5. **Test display**: Verify images load correctly in preview
+1. **Add images when possible**: Images make presentations more engaging and visual
+2. **Prefer URLs**: Use external image URLs whenever possible (AWS assets, public images, blog images)
+3. **ALWAYS control size**: Use `{width=500px}` or `{width=60%}` to prevent overflow
+4. **Default size recommendation**: Start with `{width=500px}` or `{width=60%}` for inline images
+5. **Use image-right layout**: For slides with text + image combination
+6. **Search for relevant images**: If user provides a blog/article URL, look for images in the content
+7. **Test display**: Verify images load correctly and fit within slide bounds
 
 **Step 6: Content Creation Guidelines**
 
@@ -489,8 +499,12 @@ mkdir -p ppt-{topic-name}/public/images/
 - **Use AWS dark theme** (`theme: ../theme-aws-dark`) in headmatter
 - Use layouts and syntax from ppt-aws-theme-demo
 - **Avoid animations entirely** - content clarity is more important than effects
+- **Add images to enhance visual appeal** - search for relevant images from URLs provided
+- **Use GradientText for emphasis** - `<GradientText color="blue-green">key term</GradientText>`
+- **Use bold text for important points** - `**important**`
 - Add diagrams, code blocks as needed
-- **Use external image URLs** whenever possible (AWS assets, public images)
+- **Use external image URLs** whenever possible (AWS assets, public images, blog images)
+- **ALWAYS control image size** - use `{width=500px}` or `{width=60%}` to prevent overflow
 - Write presenter notes for complex slides
 - Make reasonable assumptions about structure
 - **Split content into multiple slides** when one slide has too much content
@@ -557,7 +571,10 @@ The presentation is complete. User can run the preview command provided in Step 
 - ✅ Use appropriate layouts for each slide
 - ✅ **NO animations**: Avoid v-click, v-motion, v-clicks entirely
 - ✅ **Use emoji instead of icon components**: 🚀 ✅ ❌ 💡 📊 🔧
-- ✅ **Use external image URLs**: Prefer URLs over local files
+- ✅ **Add images for visual richness**: Search for and include relevant images
+- ✅ **Control image sizes**: Always use `{width=500px}` or `{width=60%}`
+- ✅ **Use GradientText for emphasis**: Highlight key terms in center layouts
+- ✅ **Use bold text**: Emphasize important points with `**bold**`
 - ✅ Include diagrams/code where relevant
 - ✅ Write presenter notes for complex slides
 - ✅ **Check content density**: Each slide has 5-7 items max
