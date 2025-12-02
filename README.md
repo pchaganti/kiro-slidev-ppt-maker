@@ -38,14 +38,19 @@ kiro kiro-slidev-ppt-maker
 
 ### 4. Preview and Present
 
-After the AI generates your presentation, start the Slidev server:
+After the AI generates your presentation, install dependencies and start the Slidev server:
 
 ```bash
+# First time: Install dependencies
+npm install
+
+# Start Slidev server
 npx slidev ppt-{your-topic}/slides.md
 ```
 
 For example:
 ```bash
+npm install
 npx slidev ppt-aws-lambda/slides.md
 ```
 

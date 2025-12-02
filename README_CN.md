@@ -38,14 +38,19 @@ kiro kiro-slidev-ppt-maker
 
 ### 4. 预览和演示
 
-AI 生成演示文稿后，启动 Slidev 服务器：
+AI 生成演示文稿后，安装依赖并启动 Slidev 服务器：
 
 ```bash
+# 首次运行：安装依赖
+npm install
+
+# 启动 Slidev 服务器
 npx slidev ppt-{您的主题}/slides.md
 ```
 
 例如：
 ```bash
+npm install
 npx slidev ppt-aws-lambda/slides.md
 ```
 

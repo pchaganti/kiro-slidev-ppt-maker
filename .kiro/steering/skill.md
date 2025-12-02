@@ -94,8 +94,15 @@ mkdir -p ppt-{topic-name}/public/images/
 ```
 
 **Step 5: Provide Preview Command**
+
+Always provide this exact command to the user:
 ```bash
-npx slidev ppt-{topic-name}/slides.md
+npm install && npx slidev ppt-{topic-name}/slides.md
+```
+
+Example:
+```bash
+npm install && npx slidev ppt-aws-lambda/slides.md
 ```
 
 ## II. Content Creation Guidelines
@@ -120,12 +127,12 @@ Before creating any presentation, **READ** `./ppt-aws-theme-demo/slides.md` to l
 - **Math**: LaTeX formulas (inline and block)
 - **Diagrams**: Mermaid (flowcharts, sequence, mindmap), PlantUML
 
-#### Animations (see ppt-aws-theme-demo) - **USE SPARINGLY OR NOT AT ALL**
-- **v-click**: Click animations for elements (use sparingly)
-- **v-clicks**: Batch click animations for lists (use sparingly)
-- **v-motion**: Motion animations with transitions (**AVOID - can cause issues**)
-- **v-mark**: Inline markers (underline, circle, highlight)
-- **Slide transitions**: fade, slide-left, slide-right, etc.
+#### Animations (see ppt-aws-theme-demo) - **DO NOT USE**
+- **v-click**: Click animations (**DO NOT USE**)
+- **v-clicks**: Batch click animations (**DO NOT USE**)
+- **v-motion**: Motion animations (**DO NOT USE**)
+- **v-mark**: Inline markers (**DO NOT USE**)
+- **Slide transitions**: (**DO NOT USE** - keep default)
 
 #### Components (see ppt-aws-theme-demo)
 - **Toc**: Table of contents
@@ -146,16 +153,17 @@ Before creating any presentation, **READ** `./ppt-aws-theme-demo/slides.md` to l
 1. **Cover Page**: `layout: cover` with title, subtitle
 2. **TOC Page**: `<Toc />` for navigation (optional)
 3. **Section Dividers**: `layout: section` for major topics
-4. **Content Pages**: Mix layouts (default, two-cols, image-right)
+4. **Content Pages**: Mix layouts (default, left-right, two-cols, image-right)
 5. **Summary Page**: `layout: center` for key points
 6. **End Page**: `layout: end` with contact/resources
 
 ### Design Principles
 - **One idea per slide**: Keep focus clear
 - **Visual hierarchy**: Use headings, lists, emphasis
-- **Minimal animations**: Use v-click sparingly, avoid excessive animations
+- **NO animations**: Avoid v-click, v-motion, v-clicks entirely for content clarity
 - **Consistent styling**: Stick to theme colors and fonts
 - **Code clarity**: Use line highlighting for important parts
+- **Use external images**: Prefer image URLs over local files
 
 ### Icon Usage Rules ⚠️
 
@@ -194,54 +202,47 @@ Before creating any presentation, **READ** `./ppt-aws-theme-demo/slides.md` to l
 
 ### Animation Usage Rules ⚠️
 
-**CRITICAL: Avoid excessive animations that hide content!**
+**CRITICAL: DO NOT USE ANIMATIONS!**
 
-✅ **Good animation usage:**
+✅ **Correct approach - No animations:**
 ```markdown
-# Simple reveal for lists
-<v-clicks>
-
+# Simple, clear content
 - Point 1
 - Point 2
 - Point 3
+```
 
+❌ **WRONG - Do not use animations:**
+```markdown
+# ❌ DO NOT USE v-clicks
+<v-clicks>
+- Point 1
+- Point 2
 </v-clicks>
 
-# Or no animation for simple content
-- Point 1
-- Point 2
-- Point 3
-```
-
-❌ **Bad animation usage:**
-```markdown
-# Too many nested animations
+# ❌ DO NOT USE v-click
 <div v-click>
-  <div v-motion :initial="..." :enter="...">
-    <div v-click>
-      Content hidden by multiple layers
-    </div>
-  </div>
+  Content
 </div>
 
-# Complex motion that may fail
-<div v-motion :initial="{ x: -800, y: -100, scale: 1.5, rotate: -50 }">
-  Content may not display properly
+# ❌ DO NOT USE v-motion
+<div v-motion :initial="..." :enter="...">
+  Content
 </div>
 ```
 
-**Animation best practices:**
-1. **Use v-clicks for lists**: Simple, reliable content reveal
-2. **Avoid v-motion unless necessary**: Complex animations can fail
-3. **Don't nest animations**: Keep it simple
-4. **Test all animations**: Ensure content displays correctly
-5. **Prefer no animation**: If in doubt, show content immediately
+**Why avoid animations:**
+1. **Content visibility**: Animations can hide content or fail to display
+2. **Simplicity**: Static content is more reliable and professional
+3. **Accessibility**: Not all viewers can interact with click animations
+4. **Export compatibility**: Animations may not work in PDF/PPTX exports
+5. **Focus on content**: Message clarity is more important than effects
 
-**When to skip animations:**
-- Short presentations (< 10 slides)
-- Simple bullet lists (< 4 items)
-- Technical diagrams or code
-- When content clarity is more important than effects
+**Always use static content:**
+- All presentations should show content immediately
+- No click-to-reveal animations
+- No motion animations
+- No progressive disclosure
 
 ### Content Density Rules ⚠️
 
@@ -308,25 +309,17 @@ layout: section
 
 # Core Features
 
-<v-clicks>
-
 - Feature 1 with description
 - Feature 2 with description
 - Feature 3 with description
-
-</v-clicks>
 
 ---
 
 # Advanced Features
 
-<v-clicks>
-
 - Feature 4 with description
 - Feature 5 with description
 - Feature 6 with description
-
-</v-clicks>
 
 ---
 
@@ -526,19 +519,15 @@ mkdir -p ppt-{topic-name}/public/images/
 - **Use long node labels** in diagrams (keep to 2-3 words)
 - **Forget to scale diagrams** (add `{scale: 0.7}` or `{scale: 0.8}`)
 
-**Step 7: Iterate on Feedback**
+**Step 7: Iterate on Feedback (if user requests changes)**
 - Modify slides based on user requests
-- Adjust layouts, animations, content
+- Adjust layouts, content, images
 - Add/remove slides as needed
+- User can refresh browser to see changes (Slidev auto-reloads)
 
-**Step 8: Export (optional, only when user requests)**
-```bash
-cd ppt-{topic-name}
-npx slidev export                    # PDF
-npx slidev export --format pptx      # PowerPoint
-npx slidev export --format png       # Images
-npx slidev build                     # Static website
-```
+**Step 8: Done**
+
+The presentation is complete. User can run the preview command provided in Step 5.
 
 ## IV. Important Rules
 
@@ -579,6 +568,7 @@ npx slidev build                     # Static website
 - ✅ **Scale diagrams**: Add `{scale: 0.7}` or `{scale: 0.8}` to fit
 - ✅ **Appropriate diagram layout**: LR for wide, TD for tall
 - ✅ **Split complex diagrams**: Multiple simple diagrams > one complex
+- ✅ Provide preview command with `npm install` step
 - ✅ Test preview command works
 
 ---
