@@ -51,20 +51,26 @@ ppt-{topic-name}/
 
 ### When User Requests PPT Creation
 
-**Step 1: Read Example**
+**Step 1: Read Complete Example**
 ```bash
-# ALWAYS start by reading the example
+# ALWAYS start by reading ALL example files
 Read: ./ppt-aws-theme-demo/slides.md
+Read: ./ppt-aws-theme-demo/pages/01-layouts.md
+Read: ./ppt-aws-theme-demo/pages/02-content.md
+Read: ./ppt-aws-theme-demo/pages/03-backgrounds.md
 ```
 
 Learn from ppt-aws-theme-demo:
+- **File organization**: Main slides.md + pages/ subdirectory for chapters
+- **Chapter structure**: Use `src: ./pages/XX-chapter.md` to import chapters
 - Slidev syntax and structure
 - Available layouts (cover, section, default, center, intro, left-right, two-cols, image-right, end)
-- **Animation directives** (v-click, v-motion, v-mark) - **USE SPARINGLY OR AVOID**
+- **Animation directives** (v-click, v-motion, v-mark) - **DO NOT USE**
 - Components (Toc, Tweet, Youtube, etc.)
 - Code highlighting and magic-move features
 - Mermaid diagrams and LaTeX support
 - **Image usage** (prefer external URLs over local files)
+- **Background classes** (bg-ocean, bg-sunset, bg-forest, etc.)
 
 **Step 2: Create Project Directory**
 ```bash
@@ -82,6 +88,10 @@ mkdir ppt-{sanitized-topic-name}/
 **IMMEDIATELY create** `ppt-{topic-name}/slides.md` with:
 - **Headmatter**: Use AWS dark theme (`theme: ../theme-aws-dark`), title, transitions (see ppt-aws-theme-demo)
 - **Cover page**: Title, subtitle, author
+- **Content organization**: 
+  - For presentations with **10+ slides**: Split into chapters using `pages/` directory
+  - For presentations with **< 10 slides**: Keep all content in main slides.md
+  - Use `layout: section` to divide major topics
 - **Content slides**: Use appropriate layouts from example
 - **NO animations**: Avoid v-click, v-motion, and other animations (content clarity is priority)
 - **Rich visual elements**: 
@@ -90,15 +100,44 @@ mkdir ppt-{sanitized-topic-name}/
   - Bold text for important points (`**important**`)
   - Code blocks, diagrams
   - Emoji for icons (🚀 ✅ ❌)
+  - Background classes for emphasis (`class: bg-ocean`, `class: bg-sunset`)
 - **End page**: Summary or call-to-action
 
-**Step 4: Add Assets (if needed)**
+**Step 4: Organize into Chapters (for longer presentations)**
+
+For presentations with 10+ slides, create chapter structure:
+
+```bash
+# Create pages directory
+mkdir -p ppt-{topic-name}/pages/
+
+# Create chapter files with descriptive names:
+# pages/01-introduction.md
+# pages/02-main-content.md
+# pages/03-examples.md
+```
+
+In main slides.md, use section slides and imports:
+
+```yaml
+---
+layout: section
+---
+
+# Chapter Title
+
+---
+src: ./pages/01-chapter.md
+---
+```
+
+**Step 5: Add Assets (if needed)**
 ```bash
 mkdir -p ppt-{topic-name}/public/images/
 # Place images, videos, etc.
 ```
 
-**Step 5: Provide Preview Command**
+**Step 6: Provide Preview Command**
 
 Always provide this exact command to the user:
 ```bash
@@ -155,12 +194,34 @@ Before creating any presentation, **READ** `./ppt-aws-theme-demo/slides.md` to l
 ## III. Best Practices
 
 ### Content Organization (follow ppt-aws-theme-demo structure)
+
+**For Short Presentations (< 10 slides):**
 1. **Cover Page**: `layout: cover` with title, subtitle
-2. **TOC Page**: `<Toc />` for navigation (optional)
-3. **Section Dividers**: `layout: section` for major topics
-4. **Content Pages**: Mix layouts (default, left-right, two-cols, image-right)
-5. **Summary Page**: `layout: center` for key points
-6. **End Page**: `layout: end` with contact/resources
+2. **Content Pages**: Mix layouts (default, left-right, two-cols, image-right)
+3. **End Page**: `layout: end` with contact/resources
+
+**For Longer Presentations (10+ slides):**
+1. **Main slides.md**:
+   - Cover page
+   - Section dividers (`layout: section`)
+   - Chapter imports (`src: ./pages/XX-chapter.md`)
+   - End page
+
+2. **Chapter files** (pages/XX-chapter.md):
+   - Group related content (5-10 slides per chapter)
+   - Use descriptive names (01-introduction.md, 02-features.md, 03-demo.md)
+   - Each chapter focuses on one major topic
+
+**Example structure for long presentation:**
+```
+ppt-topic/
+├── slides.md              # Main file with cover, sections, imports, end
+└── pages/
+    ├── 01-introduction.md # Introduction chapter
+    ├── 02-features.md     # Features chapter
+    ├── 03-demo.md         # Demo chapter
+    └── 04-conclusion.md   # Conclusion chapter
+```
 
 ### Design Principles
 - **One idea per slide**: Keep focus clear
@@ -496,8 +557,11 @@ mkdir -p ppt-{topic-name}/public/images/
 **Step 6: Content Creation Guidelines**
 
 ✅ **DO:**
+- **Read ALL example files first** - slides.md + all pages/ files to understand structure
 - Generate complete, ready-to-use content
 - **Use AWS dark theme** (`theme: ../theme-aws-dark`) in headmatter
+- **Organize into chapters for 10+ slides** - create pages/ directory with chapter files
+- **Use section slides** - add `layout: section` between major topics
 - Use layouts and syntax from ppt-aws-theme-demo
 - **Avoid animations entirely** - content clarity is more important than effects
 - **Add images to enhance visual appeal** - search for relevant images from URLs provided
@@ -517,11 +581,14 @@ mkdir -p ppt-{topic-name}/public/images/
 - **Test diagram visibility**: Ensure diagrams fit within slide bounds
 
 ❌ **DO NOT:**
+- Skip reading example files - always read ALL files including pages/ directory first
 - Ask for permission or confirmation
 - Show outline and wait for approval
 - Create partial content
 - Work in root directory or ppt-aws-theme-demo
 - Use other themes (always use AWS dark theme)
+- **Put 10+ slides in single file** - use chapter organization with pages/ directory
+- **Forget section slides** - always use `layout: section` to divide major topics
 - **Use ANY animations** (v-click, v-motion, v-clicks) - they cause issues and hide content
 - Create slides with excessive content in default layout (use `two-cols` for > 10 lines)
 - Use `two-cols` for short content (use `left-right` or `default` instead)
@@ -543,7 +610,7 @@ mkdir -p ppt-{topic-name}/public/images/
 
 **Step 8: Done**
 
-The presentation is complete. User can run the preview command provided in Step 5.
+The presentation is complete. User can run the preview command provided in Step 6.
 
 ## IV. Important Rules
 
@@ -567,9 +634,11 @@ The presentation is complete. User can run the preview command provided in Step 
 - **Theme issues**: Always use `theme: ../theme-aws-dark` (relative path)
 
 ### Quality Checklist
-- ✅ Read ppt-aws-theme-demo before creating
+- ✅ **Read ALL ppt-aws-theme-demo files** including pages/ directory before creating
 - ✅ Create new project directory with `ppt-` prefix
 - ✅ **Use AWS dark theme** in headmatter (`theme: ../theme-aws-dark`)
+- ✅ **Organize into chapters**: For 10+ slides, use pages/ directory with chapter files
+- ✅ **Use section slides**: Add `layout: section` to divide major topics
 - ✅ Use appropriate layouts for each slide
 - ✅ **NO animations**: Avoid v-click, v-motion, v-clicks entirely
 - ✅ **Use emoji instead of icon components**: 🚀 ✅ ❌ 💡 📊 🔧
@@ -593,5 +662,7 @@ The presentation is complete. User can run the preview command provided in Step 
 ---
 
 **Remember**: 
-- Always read `./ppt-aws-theme-demo/slides.md` first to understand Slidev's full capabilities and syntax before creating new presentations
+- **Always read ALL ppt-aws-theme-demo files** (slides.md + pages/*.md) to understand Slidev's full capabilities, syntax, and chapter organization before creating new presentations
+- **For 10+ slides**: Organize into chapters using pages/ directory with descriptive filenames (01-introduction.md, 02-features.md, etc.)
+- **Use section slides**: Add `layout: section` between major topics to create clear visual breaks
 - Always use AWS dark theme (`theme: ../theme-aws-dark`) for all presentations - this is a relative path to the theme directory
