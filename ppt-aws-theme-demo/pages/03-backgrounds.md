@@ -8,10 +8,15 @@ layout: section
 
 # Theme Customization
 
-Customize colors and gradients
+Customize colors and gradients to match your brand
+
+Learn how to:
+- Change global background colors
+- Apply per-slide background overrides
+- Use predefined gradient presets
 
 <!--
-Section slide demonstrating customization options.
+Section slide demonstrating customization options with content below title.
 -->
 
 ---

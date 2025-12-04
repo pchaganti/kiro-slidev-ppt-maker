@@ -35,8 +35,14 @@ layout: section
 
 Explore all available layouts
 
+This chapter covers:
+- Cover, intro, and section layouts
+- Content layouts (default, center)
+- Multi-column layouts (left-right, two-cols)
+- Image layouts (image-right)
+
 <!--
-Section slide introducing the layouts chapter.
+Section slide introducing the layouts chapter with content below.
 -->
 
 ---

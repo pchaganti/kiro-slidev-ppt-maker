@@ -28,7 +28,9 @@
 .section-content {
   flex: 1;
   display: flex;
-  align-items: center;
+  flex-direction: column;
+  justify-content: flex-start;
+  padding-top: 2rem;
 }
 
 .section-content :deep(h1) {
@@ -36,6 +38,7 @@
   font-weight: 700;
   color: #ffffff;
   line-height: 1.2;
+  margin-bottom: 0;
 }
 
 .section-content :deep(h2) {
@@ -43,14 +46,27 @@
   font-weight: 600;
   color: #ffffff;
   line-height: 1.3;
-  margin-top: 1rem;
+  margin-top: 2rem;
 }
 
 .section-content :deep(p) {
   font-size: 1.25rem;
   color: rgba(255, 255, 255, 0.9);
-  line-height: 1.4;
-  margin-top: 1rem;
+  line-height: 1.6;
+  margin-top: 1.5rem;
+}
+
+.section-content :deep(ul),
+.section-content :deep(ol) {
+  font-size: 1.125rem;
+  color: rgba(255, 255, 255, 0.9);
+  line-height: 1.6;
+  margin-top: 1.5rem;
+  padding-left: 1.5rem;
+}
+
+.section-content :deep(li) {
+  margin-top: 0.5rem;
 }
 
 .section-footer {

@@ -75,14 +75,19 @@ Speaker info
 The `sessionId` parameter is optional. If not provided or empty, the session ID box will not be displayed.
 
 ### Section
-Section divider with subtle gradient background
+Section divider with gradient background. Content flows from top to bottom.
 ```yaml
 ---
 layout: section
 ---
 # Section Title
 
-Optional subtitle text
+Optional subtitle or description
+
+You can add:
+- Bullet points
+- Multiple paragraphs
+- Any content below the title
 ```
 
 ### Default
