@@ -256,4 +256,85 @@ For AWS architecture diagrams, use `-->` for standard connections or `---` for l
 - AWS Green: `#00d4aa`
 - AWS Purple: `#9d4edd`
 - Dark Blue: `#232f3e`
-- Background: `rgb(20, 30, 44)`
+- Content Background: `#000000` (pure black)
+- Special Slides (cover/section/end): Gradient backgrounds
+
+## Customization
+
+### Theme Colors and Styles
+
+You can customize the theme by adding CSS variables to your presentation:
+
+```yaml
+---
+theme: ../theme-aws-dark
+---
+
+<style>
+:root {
+  /* Change background color */
+  --theme-background: rgb(30, 40, 54);
+  
+  /* Change text color */
+  --theme-text: #f0f0f0;
+  
+  /* Change brand colors */
+  --aws-blue: #0099ff;
+  --aws-orange: #ff6600;
+  
+  /* Change font sizes */
+  --theme-font-size-h1: 3.5rem;
+  --theme-font-size-h2: 2.5rem;
+}
+</style>
+
+# Your Presentation
+```
+
+See [CUSTOMIZATION.md](./CUSTOMIZATION.md) for detailed customization guide.
+
+See [BACKGROUND-GUIDE.md](./BACKGROUND-GUIDE.md) for complete background customization guide.
+
+### Available CSS Variables
+
+**Background Variables:**
+- `--theme-background`: Content slides background (default: #000000)
+- `--theme-gradient-cover`: Cover slide gradient
+- `--theme-gradient-section`: Section slide gradient
+- `--theme-gradient-end`: End slide gradient
+
+**Color Variables:**
+- `--theme-text`: Main text color
+- `--aws-blue`, `--aws-orange`, `--aws-green`: Brand colors
+
+**Typography Variables:**
+- `--theme-font-size-h1`, `--theme-font-size-h2`, etc.: Font sizes
+
+**Spacing Variables:**
+- `--theme-padding`: Slide padding
+- `--theme-gap`: Column gap
+
+### Predefined Background Classes
+
+Apply gradient backgrounds to any slide using CSS classes:
+
+```yaml
+---
+layout: center
+class: bg-ocean
+---
+
+# Ocean Themed Slide
+```
+
+**AWS Gradient Classes:**
+- `bg-aws-default`, `bg-aws-blue`, `bg-aws-orange`, `bg-aws-green`, `bg-aws-purple`
+
+**Theme Gradient Classes:**
+- `bg-ocean` (professional), `bg-sunset` (warm), `bg-forest` (natural)
+- `bg-night` (elegant), `bg-fire` (bold), `bg-royal` (luxury), `bg-tech` (modern)
+
+**Solid Color Classes:**
+- `bg-black`, `bg-dark-gray`, `bg-dark-blue`, `bg-aws-dark-blue`
+
+See [CUSTOMIZATION.md](./CUSTOMIZATION.md) for complete guide and examples.

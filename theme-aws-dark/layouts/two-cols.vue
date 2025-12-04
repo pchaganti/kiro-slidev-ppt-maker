@@ -31,7 +31,7 @@
 
 <style scoped>
 .two-cols {
-  background: rgb(20, 30, 44);
+  background: #000000;
   padding: 2.5rem 3rem 1.5rem 3rem;
   display: flex;
   flex-direction: column;

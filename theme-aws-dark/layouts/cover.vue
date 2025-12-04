@@ -40,7 +40,7 @@ const showSessionId = computed(() => props.sessionId && props.sessionId.trim() !
     <div class="cover-footer">
       <p class="copyright">© {{ new Date().getFullYear() }}, Amazon Web Services, Inc. or its affiliates. All rights reserved. Amazon Confidential and Trademark.</p>
       <div class="aws-logo-large">
-        <AWSLogo size="xl" color="#ffffff" />
+        <AWSLogo size="lg" color="#ffffff" />
       </div>
     </div>
   </div>
@@ -48,7 +48,7 @@ const showSessionId = computed(() => props.sessionId && props.sessionId.trim() !
 
 <style scoped>
 .cover {
-  background: linear-gradient(135deg, #0a2540 0%, #1a4d7a 40%, #2e6db5 60%, #7b3f9e 80%, #9d4edd 100%);
+  background: var(--theme-gradient-cover, linear-gradient(135deg, #0a2540 0%, #1a4d7a 40%, #2e6db5 60%, #7b3f9e 80%, #9d4edd 100%));
   padding: 2.5rem 3rem 1.5rem 3rem;
   display: flex;
   flex-direction: column;
@@ -153,6 +153,7 @@ const showSessionId = computed(() => props.sessionId && props.sessionId.trim() !
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
+  padding-bottom: 0.5rem;
 }
 
 .copyright {
@@ -166,5 +167,7 @@ const showSessionId = computed(() => props.sessionId && props.sessionId.trim() !
 .aws-logo-large {
   display: flex;
   align-items: center;
+  transform: scale(0.85);
+  transform-origin: bottom right;
 }
 </style>

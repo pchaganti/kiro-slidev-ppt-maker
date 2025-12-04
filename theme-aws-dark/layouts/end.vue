@@ -17,7 +17,7 @@
 
 <style scoped>
 .end {
-  background: linear-gradient(135deg, #0f2942 0%, #1a4d8f 25%, #2e6db5 50%, #7b3f9e 75%, #9d4edd 100%);
+  background: var(--theme-gradient-end, linear-gradient(135deg, #0f2942 0%, #1a4d8f 25%, #2e6db5 50%, #7b3f9e 75%, #9d4edd 100%));
   padding: 2.5rem 3rem 1.5rem 3rem;
   display: flex;
   flex-direction: column;
