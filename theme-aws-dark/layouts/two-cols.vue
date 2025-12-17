@@ -32,7 +32,7 @@
 <style scoped>
 .two-cols {
   background: #000000;
-  padding: 2.5rem 3rem 1.5rem 3rem;
+  padding: 1.5rem 3rem 1rem 3rem;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -47,16 +47,16 @@
 }
 
 .two-cols-title {
-  font-size: 3rem;
+  font-size: 2.25rem;
   font-weight: 700;
   color: #ffffff;
-  margin-bottom: 2rem;
+  margin-bottom: 1rem;
   line-height: 1.2;
   flex-shrink: 0;
 }
 
 .two-cols-title :deep(h1) {
-  font-size: 3rem;
+  font-size: 2.25rem;
   font-weight: 700;
   color: #ffffff;
   margin: 0;
@@ -67,7 +67,7 @@
   flex: 1;
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 3rem;
+  gap: 2rem;
   overflow: auto;
   min-height: 0;
 }
@@ -130,7 +130,8 @@
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
-  margin-top: 1rem;
+  margin-top: 0.5rem;
+  padding-bottom: 0.25rem;
   flex-shrink: 0;
 }
 

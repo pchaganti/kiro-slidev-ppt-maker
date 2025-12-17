@@ -18,7 +18,7 @@
 <style scoped>
 .center {
   background: #000000;
-  padding: 2.5rem 3rem 1.5rem 3rem;
+  padding: 1.5rem 3rem 1rem 3rem;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -36,54 +36,55 @@
 }
 
 .center-content :deep(h1) {
-  font-size: 3rem;
+  font-size: 2.25rem;
   font-weight: 700;
   color: #ffffff;
-  margin-bottom: 2rem;
+  margin-bottom: 1rem;
   line-height: 1.2;
 }
 
 .center-content :deep(h2) {
-  font-size: 2rem;
+  font-size: 1.5rem;
   font-weight: 600;
   color: #ffffff;
-  margin-bottom: 1.5rem;
+  margin-bottom: 0.75rem;
   line-height: 1.3;
 }
 
 .center-content :deep(h3) {
-  font-size: 1.5rem;
+  font-size: 1.25rem;
   font-weight: 600;
   color: #ffffff;
-  margin-bottom: 1rem;
+  margin-bottom: 0.5rem;
   line-height: 1.3;
 }
 
 .center-content :deep(p) {
-  font-size: 1.125rem;
+  font-size: 1rem;
   color: #ffffff;
-  line-height: 1.6;
-  margin-bottom: 1rem;
+  line-height: 1.5;
+  margin-bottom: 0.75rem;
 }
 
 .center-content :deep(ul),
 .center-content :deep(ol) {
-  font-size: 1.125rem;
-  line-height: 1.8;
+  font-size: 1rem;
+  line-height: 1.6;
   color: #ffffff;
-  padding-left: 2.5rem;
-  margin: 1rem 0;
+  padding-left: 2rem;
+  margin: 0.5rem 0;
   text-align: left;
 }
 
 .center-content :deep(li) {
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.25rem;
 }
 
 .center-footer {
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
+  padding-bottom: 0.25rem;
 }
 
 .footer-left {

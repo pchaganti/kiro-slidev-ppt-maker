@@ -19,7 +19,7 @@
 <style scoped>
 .default {
   background: #000000;
-  padding: 2.5rem 3rem 1.5rem 3rem;
+  padding: 1.5rem 3rem 1rem 3rem;
   height: 100%;
   display: flex;
   flex-direction: column;
@@ -32,54 +32,56 @@
 }
 
 .content-area :deep(h1) {
-  font-size: 3rem;
+  font-size: 2.25rem;
   font-weight: 700;
   color: #ffffff;
-  margin-bottom: 2rem;
+  margin-bottom: 1rem;
+  margin-top: 0;
   line-height: 1.2;
 }
 
 .content-area :deep(h2) {
-  font-size: 2rem;
+  font-size: 1.5rem;
   font-weight: 600;
   color: #ffffff;
-  margin-bottom: 1.5rem;
+  margin-bottom: 0.75rem;
   line-height: 1.3;
 }
 
 .content-area :deep(h3) {
-  font-size: 1.5rem;
+  font-size: 1.25rem;
   font-weight: 600;
   color: #ffffff;
-  margin-bottom: 1rem;
+  margin-bottom: 0.5rem;
   line-height: 1.3;
 }
 
 .content-area :deep(p) {
-  font-size: 1.125rem;
-  line-height: 1.6;
+  font-size: 1rem;
+  line-height: 1.5;
   color: #ffffff;
-  margin-bottom: 1rem;
+  margin-bottom: 0.75rem;
 }
 
 .content-area :deep(ul),
 .content-area :deep(ol) {
-  font-size: 1.125rem;
-  line-height: 1.8;
+  font-size: 1rem;
+  line-height: 1.6;
   color: #ffffff;
-  padding-left: 2.5rem;
-  margin: 1rem 0;
+  padding-left: 2rem;
+  margin: 0.5rem 0;
 }
 
 .content-area :deep(li) {
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.25rem;
 }
 
 .default-footer {
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
-  margin-top: 1rem;
+  margin-top: 0.5rem;
+  padding-bottom: 0.25rem;
 }
 
 .footer-left {

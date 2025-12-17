@@ -31,7 +31,7 @@ const showFooter = computed(() => {
 <style scoped>
 .global-footer {
   position: fixed;
-  bottom: 0.75rem;
+  bottom: 0.5rem;
   left: 1rem;
   right: 1rem;
   display: flex;
