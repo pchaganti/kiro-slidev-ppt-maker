@@ -184,7 +184,6 @@ Before creating any presentation, **READ** `./ppt-aws-theme-demo/slides.md` to l
 - **Youtube**: Embed videos
 - **Arrow**: Draw arrows
 - **Transform**: Scale/transform elements
-- **Counter**: Custom components (see example)
 
 #### Styling (see ppt-aws-theme-demo)
 - **UnoCSS classes**: text-center, text-3xl, font-bold, bg-blue-500, etc.
