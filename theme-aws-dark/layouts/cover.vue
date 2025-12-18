@@ -38,7 +38,7 @@ const showSessionId = computed(() => props.sessionId && props.sessionId.trim() !
     </div>
     
     <div class="cover-footer">
-      <p class="copyright">© {{ new Date().getFullYear() }}, Amazon Web Services, Inc. or its affiliates. All rights reserved. Amazon Confidential and Trademark.</p>
+      <p class="copyright">© {{ new Date().getFullYear() }}, Amazon Web Services, Inc. or its affiliates. All rights reserved.</p>
       <div class="aws-logo-large">
         <AWSLogo size="lg" color="#ffffff" />
       </div>

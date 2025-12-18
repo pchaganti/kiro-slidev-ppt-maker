@@ -6,7 +6,7 @@
     <div class="section-footer">
       <div class="footer-left">
         <AWSLogo size="sm" color="#e0e0e0" />
-        <p class="copyright">© {{ new Date().getFullYear() }}, Amazon Web Services, Inc. or its affiliates. All rights reserved. Amazon Confidential and Trademark.</p>
+        <p class="copyright">© {{ new Date().getFullYear() }}, Amazon Web Services, Inc. or its affiliates. All rights reserved.</p>
       </div>
       <div class="page-number-box">
         <SlideCurrentNo />
@@ -18,7 +18,7 @@
 <style scoped>
 .section {
   background: var(--theme-gradient-section, linear-gradient(135deg, #0a2540 0%, #1a4d7a 40%, #2e6db5 60%, #265a6b 100%));
-  padding: 2.5rem 3rem 1.5rem 3rem;
+  padding: 1.5rem 3rem 1rem 3rem;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -73,6 +73,8 @@
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
+  margin-top: 0.5rem;
+  padding-bottom: 0.25rem;
 }
 
 .footer-left {

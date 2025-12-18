@@ -7,7 +7,7 @@
     <div class="default-footer">
       <div class="footer-left">
         <AWSLogo size="sm" color="#e0e0e0" />
-        <p class="copyright">© {{ new Date().getFullYear() }}, Amazon Web Services, Inc. or its affiliates. All rights reserved. Amazon Confidential and Trademark.</p>
+        <p class="copyright">© {{ new Date().getFullYear() }}, Amazon Web Services, Inc. or its affiliates. All rights reserved.</p>
       </div>
       <div class="page-number-box">
         <SlideCurrentNo />

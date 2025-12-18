@@ -230,34 +230,34 @@ img {
   background: #141e2c !important;
 }
 
-/* Mermaid Diagrams - White Lines and Boxes */
+/* Mermaid Diagrams - Light Blue Theme (AWS Blue #00a1e0) */
 
-/* Arrow lines - White */
+/* Arrow lines - Light Blue */
 .mermaid .edgePath .path {
-  stroke: #ffffff !important;
-  stroke-width: 2px !important;
+  stroke: #00a1e0 !important;
+  stroke-width: 2.5px !important;
   fill: none !important;
 }
 
-/* Arrowheads - White */
+/* Arrowheads - Light Blue */
 .mermaid .edgePath marker path {
-  fill: #ffffff !important;
-  stroke: #ffffff !important;
+  fill: #00a1e0 !important;
+  stroke: #00a1e0 !important;
 }
 
 .mermaid marker path {
-  fill: #ffffff !important;
-  stroke: #ffffff !important;
+  fill: #00a1e0 !important;
+  stroke: #00a1e0 !important;
 }
 
-/* Node boxes - White border, transparent fill */
+/* Node boxes - Light Blue border, semi-transparent fill */
 .mermaid .node rect,
 .mermaid .node circle,
 .mermaid .node ellipse,
 .mermaid .node polygon {
-  fill: transparent !important;
-  stroke: #ffffff !important;
-  stroke-width: 2px !important;
+  fill: rgba(0, 161, 224, 0.12) !important;
+  stroke: #00a1e0 !important;
+  stroke-width: 2.5px !important;
 }
 
 /* Node text - White */
@@ -286,11 +286,11 @@ img {
   fill: #ffffff !important;
 }
 
-/* Cluster/subgraph styling - White dashed border */
+/* Cluster/subgraph styling - Light Blue dashed border */
 .mermaid .cluster rect {
-  fill: transparent !important;
-  stroke: rgba(255, 255, 255, 0.5) !important;
-  stroke-width: 1px !important;
+  fill: rgba(0, 161, 224, 0.08) !important;
+  stroke: rgba(0, 161, 224, 0.6) !important;
+  stroke-width: 1.5px !important;
   stroke-dasharray: 5, 5 !important;
 }
 
@@ -301,28 +301,28 @@ img {
   font-weight: 600 !important;
 }
 
-/* Flowchart specific - White lines */
+/* Flowchart specific - Light Blue lines */
 .mermaid .flowchart-link {
-  stroke: #ffffff !important;
-  stroke-width: 2px !important;
+  stroke: #00a1e0 !important;
+  stroke-width: 2.5px !important;
 }
 
 /* Sequence diagram styling */
 .mermaid .actor {
-  fill: transparent !important;
-  stroke: #ffffff !important;
+  fill: rgba(0, 161, 224, 0.12) !important;
+  stroke: #00a1e0 !important;
   stroke-width: 2px !important;
 }
 
 .mermaid .actor-line {
-  stroke: rgba(255, 255, 255, 0.5) !important;
+  stroke: rgba(0, 161, 224, 0.5) !important;
   stroke-width: 1px !important;
   stroke-dasharray: 5, 5 !important;
 }
 
 .mermaid .messageLine0,
 .mermaid .messageLine1 {
-  stroke: #ffffff !important;
+  stroke: #00a1e0 !important;
   stroke-width: 2px !important;
 }
 
@@ -332,8 +332,8 @@ img {
 }
 
 .mermaid .note {
-  fill: transparent !important;
-  stroke: #ffffff !important;
+  fill: rgba(0, 161, 224, 0.12) !important;
+  stroke: #4dc3f0 !important;
   stroke-width: 1px !important;
 }
 
